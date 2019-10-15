@@ -1,14 +1,31 @@
 ﻿@model DogDayCareRS.MVC.UI.Models.LoginViewModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Login";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/about.jpg" data-speed="0.8"></div>
+    <div class="home_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content text-center">
+                      
+                        <div class="home_title"><h1>Login</h1></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
                 @Html.AntiForgeryToken()
                 <h4>Use a local account to log in.</h4>
                 <hr />

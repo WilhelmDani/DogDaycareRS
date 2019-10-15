@@ -192,6 +192,7 @@
     <Content Include="Content\css\bootstrap-4.1.2\popper.js" />
     <Content Include="Content\css\contact.css" />
     <Content Include="Content\css\contact_responsive.css" />
+    <Content Include="Content\css\CustomStyles.css" />
     <Content Include="Content\css\elements.css" />
     <Content Include="Content\css\elements_responsive.css" />
     <Content Include="Content\css\main_styles.css" />
@@ -212,9 +213,13 @@
     <Content Include="Content\images\chef_3.jpg" />
     <Content Include="Content\images\chef_4.jpg" />
     <Content Include="Content\images\contact.jpg" />
+    <Content Include="Content\images\DDRSfavicon.png" />
+    <Content Include="Content\images\DDRSLogo.png" />
     <Content Include="Content\images\deserts.jpg" />
     <Content Include="Content\images\elements.jpg" />
     <Content Include="Content\images\home.jpg" />
+    <Content Include="Content\images\Homedoggo.jpg" />
+    <Content Include="Content\images\Homedoggo2.jpg" />
     <Content Include="Content\images\icon_1.png" />
     <Content Include="Content\images\icon_2.png" />
     <Content Include="Content\images\icon_3.png" />
@@ -222,6 +227,7 @@
     <Content Include="Content\images\icon_5.png" />
     <Content Include="Content\images\icon_6.png" />
     <Content Include="Content\images\icon_7.png" />
+    <Content Include="Content\images\indexdoggo.png" />
     <Content Include="Content\images\intro_1.jpg" />
     <Content Include="Content\images\intro_2.jpg" />
     <Content Include="Content\images\main.jpg" />
@@ -463,7 +469,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\OriginalLayout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -534,6 +540,7 @@
     <Content Include="_Archive\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="_Archive\plugins\font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="_Archive\plugins\jquery-datepicker\package.json" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

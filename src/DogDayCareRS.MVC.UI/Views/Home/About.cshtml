@@ -1,12 +1,78 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<hgroup>
-    <h2>@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-</hgroup>
-<div class="row-fluid">
-    <div class="span12">
-        <p>Use this area to provide additional information.</p>
+
+<!-- Intro -->
+<div class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="intro_content">
+                    <div class="intro_subtitle page_subtitle">Something new</div>
+                    <div class="intro_title"><h2>An Extraordinery Experience</h2></div>
+                    <div class="intro_text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti. Vivamus luctus diam eu neque rutrum, vitae aliquet dolor venenatis. Nulla consequat fringilla massa.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 intro_col">
+                        <div class="intro_image"><img src="/Content/images//intro_1.jpg" alt=""></div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 intro_col">
+                        <div class="intro_image"><img src="/Content/images//intro_2.jpg" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Signature Dish -->
+<div class="sig">
+    <div class="sig_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="sig_content">
+                        <div class="sig_subtitle page_subtitle">We Are...</div>
+                        <div class="sig_title"><h1>A family owned business since 2003!</h1></div>
+                        <div class="rating_r sig_rating rating_r_5" style="text-align: center;"><i></i><i></i><i></i><i></i><i></i></div>
+                        <div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
+                            <div class="sig_name"> Now you can easily reserve a spot for your pup at any of our Kansas City and surrounding Metro area locations with an easy click!</div>
+
+                        </div>
+                        @*<div class="sig_content_list">
+                                <ul class="d-flex flex-row align-items-center justify-content-start">
+                                    <li>Pork</li>
+                                    <li>Tenderloin</li>
+                                    <li>Green Pepper</li>
+                                    <li>Veggies</li>
+                                </ul>
+                            </div>*@
+                        <div class="button sig_button trans_200"><a href="#">Make a Reservation</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sig_image_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 offset-lg-5">
+                    <div class="sig_image">
+                        <div class="background_image" style="background-image:url(/Content/images/indexdoggo.png)"></div>
+                        <img src="~/Content/images/indexdoggo.png" alt="a mini-doodle running at full speed towards the camera">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Video -->
+<div class="video_section">
+    <div class="background_image" style="background-image:url(/Content/images//video.jpg)"></div>
+    <div class="video_section_content d-flex flex-column align-items-center justify-content-center text-center">
+        <div class="video_section_title">Food for the soul</div>
+        <div class="video_section_icon"><a class="vimeo video_button" href="https://player.vimeo.com/video/99340873?autoplay=1&loop=1&title=0&autopause=0"><i class="fa fa-play" aria-hidden="true"></i></a></div>
     </div>
 </div>
