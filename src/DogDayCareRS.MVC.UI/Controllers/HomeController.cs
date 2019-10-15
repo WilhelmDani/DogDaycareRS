@@ -14,7 +14,7 @@ namespace DogDayCareRS.MVC.UI.Controllers
         [Authorize]
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            
 
             return View();
         }
@@ -22,7 +22,14 @@ namespace DogDayCareRS.MVC.UI.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            
+
+            return View();
+        }
+
+        
+        public ActionResult Services()
+        {
 
             return View();
         }

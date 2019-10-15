@@ -200,6 +200,9 @@
     <Content Include="Content\css\menu_responsive.css" />
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\images\about.jpg" />
+    <Content Include="Content\images\aboutdoggo.png" />
+    <Content Include="Content\images\Aboutintrodoggo1.png" />
+    <Content Include="Content\images\Aboutintrodoggo3.png" />
     <Content Include="Content\images\about_intro.jpg" />
     <Content Include="Content\images\blog.jpg" />
     <Content Include="Content\images\blog_1.jpg" />
@@ -213,6 +216,7 @@
     <Content Include="Content\images\chef_3.jpg" />
     <Content Include="Content\images\chef_4.jpg" />
     <Content Include="Content\images\contact.jpg" />
+    <Content Include="Content\images\contactDoggo.png" />
     <Content Include="Content\images\DDRSfavicon.png" />
     <Content Include="Content\images\DDRSLogo.png" />
     <Content Include="Content\images\deserts.jpg" />
@@ -242,6 +246,8 @@
     <Content Include="Content\images\tab.jpg" />
     <Content Include="Content\images\testimonials.jpg" />
     <Content Include="Content\images\video.jpg" />
+    <Content Include="Content\images\videodoggo.png" />
+    <Content Include="Content\images\videodoggo2.png" />
     <Content Include="Content\js\about.js" />
     <Content Include="Content\js\blog.js" />
     <Content Include="Content\js\contact.js" />
@@ -541,6 +547,7 @@
     <Content Include="_Archive\plugins\font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="_Archive\plugins\jquery-datepicker\package.json" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Services.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
