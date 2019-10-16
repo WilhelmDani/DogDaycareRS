@@ -19,7 +19,11 @@
     <link href="~/Content/plugins/jquery-timepicker/jquery.timepicker.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="~/Content/css/main_styles.css">
     <link rel="stylesheet" type="text/css" href="~/Content/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
+
+
+    <!--Custom Style Sheet-->
     <link rel="stylesheet" type="text/css" href="~/Content/css/CustomStyles.css">
 </head>
 <body>
@@ -32,10 +36,10 @@
                     <div class="col">
                         <div class="header_content d-flex flex-row align-items-center justify-content-start">
                             <div class="logo">
-                                
-                                    <img src="~/Content/images/DDRSLogo.png" />
-                                    
-                               
+
+                                <img src="~/Content/images/DDRSLogo.png" />
+
+
                             </div>
                             <nav class="main_nav">
                                 <ul class="d-flex flex-row align-items-center justify-content-start">
@@ -43,9 +47,23 @@
                                     <li><a href="@Url.Action("About","Home")">About</a></li>
                                     <li><a href="@Url.Action("Services","Home")">Services</a></li>
                                     <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                                    @if (User.IsInRole("Admin") || (User.IsInRole("Client")) || (User.IsInRole("Employee"))) {<li><a href="@Url.Action("Reservations","Home")">Make a Reservation</a></li> }
+                                    <div class="dropdown">
+                                        <li><a href="@Url.Action("AdminPanel","Home")">Admin Panel</a></li>
+                                        <div class="dropdown-content">
+                                            <li><a href="@Url.Action("Index","Locations")">Locations</a></li>
+                                            <li><a href="@Url.Action("Index","UserDetails")">Clients</a></li>
+                                            <li><a href="@Url.Action("Index","OwnerAssets")">Pups</a></li>
+                                            @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+                                            {<li><a href="@Url.Action("Index", "RolesAdmin")">Manage Roles</a></li>
+                                                <li><a href="@Url.Action("Index","UsersAdmin")">Manage Users</a></li>}
+                                        </div>
+                                    </div>
+                                    @Html.Partial("_LoginPartial")
+
                                 </ul>
                             </nav>
-                            <div class="reservations_phone ml-auto" style="text-align: center">Reservations: +1 (987) 555-8892</div>
+
                         </div>
                     </div>
                 </div>
@@ -68,6 +86,7 @@
             </div>
         </div>
         <!-- Menu -->
+        <!--TODO: Update hamburger menu once you're done with the reg nav bar-->
         <div class="menu trans_800">
             <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
                 <ul>
@@ -77,14 +96,14 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="menu_reservations_phone ml-auto">Reservations: +34 586 778 8892</div>
+
         </div>
 
-                    <!-- Main -->
-                    <main>
-                        @RenderBody();
-                    </main>
-                   
+        <!-- Main -->
+        <main>
+            @RenderBody();
+        </main>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
@@ -94,7 +113,7 @@
                         <div class="footer_logo">
                             <div class="footer_logo_subtitle">Reserve </div>
                             <div class="footer_logo_title">A <strong style="color:red;">PUP</strong></div>
-                            
+
                         </div>
                         <div class="copyright">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -135,7 +154,7 @@
         </footer>
     </div>
 
-    @RenderSection("scripts", required: false)
+
 
 
     <script src="~/Content/js/jquery-3.2.1.min.js"></script>
@@ -153,5 +172,11 @@
     <script src="~/Content/plugins/jquery-datepicker/jquery-ui.js"></script>
     <script src="~/Content/plugins/jquery-timepicker/jquery.timepicker.js"></script>
     <script src="~/Content/js/custom.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.colVis.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>
+

@@ -1,0 +1,39 @@
+﻿@model DogDayCareRS.MVC.UI.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "EmailConfirmation";
+}
+
+<!-- Home -->
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/contactDoggo.png" data-speed="0.8"></div>
+</div>
+
+<div class="body-wrapper">
+    <div id="container">
+
+
+        <div id="body" class="width">
+
+            <section id="content">
+                <article style="text-align:center">
+                    <hr />
+                    <div class="home_subtitle page_subtitle" >Email Confirmation</div><br />
+
+                    <h4>We recived the following message:<br /></h4> <br/>
+
+                    <p>@Model.Message</p><br />
+
+                    <h4><br />Thank you for contacting Us! Reserve A Pup will respond as soon as we can to @Model.Email.</h4>
+
+                </article>
+
+
+            </section>
+
+
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div>

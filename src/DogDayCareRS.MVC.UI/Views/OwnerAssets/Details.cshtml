@@ -1,0 +1,116 @@
+﻿@model DogDayCareRS.MVC.DATA.EF.OwnerAsset
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="home2">
+    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+</div>
+
+
+<div class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="intro_content">
+                    <div class="intro_subtitle page_subtitle moveToCenter">@Model.AssetName's Details</div>
+                    <div class="intro_title"></div>
+                    <div class="intro_text">
+                        <div>
+
+                            <hr />
+                           
+
+                            <div class="moveToCenter3" id="detailsStylingWrapper">
+
+                                <div id="firstDetailsChunk">
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @*@Html.DisplayNameFor(model => model.AssetPhoto)*@
+                                        </dt>
+                                        <dd>
+                                            <img src="@Url.Content("~/Content/DogImages/"  +  @Model.AssetPhoto)" class="doggoPicturesDetails" />
+                                        </dd>
+                                    </dl>
+                                </div>
+
+                                <div id="secondDetailsChunk">
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.AssetName)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.AssetName)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.OwnerID)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.OwnerID)
+                                        </dd>
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.SpecialNotes)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.SpecialNotes)
+                                        </dd>
+                                    </dl>
+                                </div>
+
+                                <div id="thirdDetailsChunk">
+                                    <dl class="dl-horizontal">
+                                 
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.IsActive)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.IsActive)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.DateAdded)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.DateAdded)
+                                        </dd>
+                                    </dl>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <p class="moveToCenter">
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetID }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<h4>OwnerAsset</h4>
+<hr />
+<dl class="dl-horizontal">
+
+
+
+
+   
+   
+
+</dl>
+</div>
+

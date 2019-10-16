@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DogDayCareRS.MVC.DATA.EF.Reservation>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="home2">
+    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+    <br />
+</div>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="myTable display fa-cc-stripe cell-border">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location.LocationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerAsset.AssetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerAsset.OwnerID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.LocationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerAsset.AssetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerAsset.OwnerID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+@section scripts {
+    <script>
+    $(document).ready(function () {
+        $('.myTable').DataTable();
+    });
+    </script>
+}

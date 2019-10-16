@@ -1,0 +1,25 @@
+﻿@model DogDayCareRS.MVC.DATA.EF.Location
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="home2">
+    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+    <br />
+</div>
+
+<h3 class="moveToCenter">Are you sure you want to delete @Model.LocationName?</h3>
+<div class="moveToCenter">
+    
+    <hr />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

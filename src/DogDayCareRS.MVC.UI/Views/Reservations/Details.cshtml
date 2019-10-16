@@ -1,0 +1,68 @@
+﻿@model DogDayCareRS.MVC.DATA.EF.Reservation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="home2">
+    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+</div>
+
+<div>
+    <div class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="intro_content">
+                        <h4 class="moveToCenter intro_subtitle page_subtitle">@Model.OwnerAsset.AssetName's Reservation</h4>
+                        <div class="intro_title"></div>
+                        <div class="intro_text">
+                            <div>
+
+                                <hr />
+                                <div class="moveToCenter4" id="detailsStylingWrapper">
+
+                                    <div id="firstDetailsChunk">
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.ReservationDate)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.ReservationDate)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Location.LocationName)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Location.LocationName)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.OwnerAsset.AssetName)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.OwnerAsset.AssetName)
+                                            </dd>
+
+                                        </dl>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <p class="moveToCenter">
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.LocationID }) |
+                                @Html.ActionLink("Back to List", "Index")
+                            </p>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

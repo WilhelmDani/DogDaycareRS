@@ -1,0 +1,100 @@
+﻿@model DogDayCareRS.MVC.DATA.EF.Location
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="home">
+    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+</div>
+
+
+
+<div class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="intro_content">
+                    <div class="intro_subtitle page_subtitle moveToCenter">@Model.LocationName Details</div>
+                    <div class="intro_title"></div>
+                    <div class="intro_text">
+                        <div>
+                           
+                            <hr />
+                            <div class="moveToCenter2" id="detailsStylingWrapper">
+                                
+                                <div id="firstDetailsChunk">
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.LocationName)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.LocationName)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.Address)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.Address)
+                                        </dd>
+                                        </dl>
+                                </div>
+
+                                <div id="secondDetailsChunk">
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.City)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.City)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.State)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.State)
+                                        </dd>
+                                        </dl>
+                                </div>
+
+                                <div id="thirdDetailsChunk">
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.ZipCode)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.ZipCode)
+                                        </dd>
+
+                                        <dt>
+                                            @Html.DisplayNameFor(model => model.ReservationLimit)
+                                        </dt>
+
+                                        <dd>
+                                            @Html.DisplayFor(model => model.ReservationLimit)
+                                        </dd>
+                                    </dl>
+                                </div>
+
+                               
+                            </div>
+                        </div>
+                        <p class="moveToCenter">
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.LocationID }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

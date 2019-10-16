@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DogDayCareRS.MVC.DATA.EF.OwnerAsset>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="home2">
+    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="myTable display fa-cc-stripe cell-border">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetPhoto)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerID)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    <img src="@Url.Content("~/Content/DogImages/" +  @item.AssetPhoto)" alt="A Reserve A Pup Client's doggo" class="doggoPictures" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecialNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+
+@section scripts {
+    <script>
+    $(document).ready(function () {
+        $('.myTable').DataTable();
+    });
+    </script>
+}

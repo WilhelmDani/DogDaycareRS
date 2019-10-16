@@ -70,8 +70,11 @@ namespace DogDayCareRS.MVC.DATA.EF/*.Metadata*/
         [Required]
         public int LocationID { get; set; }
         [Required]
+        [Display(Name = "Reservation Date")]
+        [DisplayFormat(DataFormatString = "{0:d}", NullDisplayText = "[N/A]")]
         public System.DateTime ReservationDate { get; set; }
         [Required]
+        [Display(Name = "Owner ID")]
         public int OwnerAssetID { get; set; }
     }
     [MetadataType(typeof(ReservationMetadata))]

@@ -4,7 +4,9 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create.</h2>
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+</div>
 
 
 @using (Html.BeginForm())
@@ -12,7 +14,8 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Role.</h4>
+        <br/>
+        <h2 class="moveToCenter">Add a New Role.</h2>
         <hr />
         @Html.ValidationSummary(true)
 

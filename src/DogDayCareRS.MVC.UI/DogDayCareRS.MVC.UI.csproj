@@ -169,14 +169,19 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OwnerAssetsController.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\UserDetailsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -199,11 +204,32 @@
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\menu_responsive.css" />
     <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\DogImages\BanjoJ.png" />
+    <Content Include="Content\DogImages\BilboF.png" />
+    <Content Include="Content\DogImages\BoltH.png" />
+    <Content Include="Content\DogImages\CeasarK.png" />
+    <Content Include="Content\DogImages\CocoM.png" />
+    <Content Include="Content\DogImages\DarcyH.png" />
+    <Content Include="Content\DogImages\DocA.png" />
+    <Content Include="Content\DogImages\EdgarA.png" />
+    <Content Include="Content\DogImages\GracieB.png" />
+    <Content Include="Content\DogImages\IzzyA.png" />
+    <Content Include="Content\DogImages\JacksonW.png" />
+    <Content Include="Content\DogImages\JosieL.png" />
+    <Content Include="Content\DogImages\LeviY.png" />
+    <Content Include="Content\DogImages\no_photo_available.png" />
+    <Content Include="Content\DogImages\RangerW.png" />
+    <Content Include="Content\DogImages\ScoobR.png" />
+    <Content Include="Content\DogImages\SmokeyO.png" />
+    <Content Include="Content\DogImages\TobyW.png" />
+    <Content Include="Content\DogImages\YoshiH.png" />
+    <Content Include="Content\DogImages\ZekeP.png" />
     <Content Include="Content\images\about.jpg" />
     <Content Include="Content\images\aboutdoggo.png" />
     <Content Include="Content\images\Aboutintrodoggo1.png" />
     <Content Include="Content\images\Aboutintrodoggo3.png" />
     <Content Include="Content\images\about_intro.jpg" />
+    <Content Include="Content\images\Admindoggo.png" />
     <Content Include="Content\images\blog.jpg" />
     <Content Include="Content\images\blog_1.jpg" />
     <Content Include="Content\images\blog_2.jpg" />
@@ -224,6 +250,7 @@
     <Content Include="Content\images\home.jpg" />
     <Content Include="Content\images\Homedoggo.jpg" />
     <Content Include="Content\images\Homedoggo2.jpg" />
+    <Content Include="Content\images\Homedoggo3.png" />
     <Content Include="Content\images\icon_1.png" />
     <Content Include="Content\images\icon_2.png" />
     <Content Include="Content\images\icon_3.png" />
@@ -548,6 +575,27 @@
     <Content Include="_Archive\plugins\jquery-datepicker\package.json" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\Home\EmailConfirmation.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\UserDetails\Create.cshtml" />
+    <Content Include="Views\UserDetails\Delete.cshtml" />
+    <Content Include="Views\UserDetails\Details.cshtml" />
+    <Content Include="Views\UserDetails\Edit.cshtml" />
+    <Content Include="Views\UserDetails\Index.cshtml" />
+    <Content Include="Views\OwnerAssets\Create.cshtml" />
+    <Content Include="Views\OwnerAssets\Delete.cshtml" />
+    <Content Include="Views\OwnerAssets\Details.cshtml" />
+    <Content Include="Views\OwnerAssets\Edit.cshtml" />
+    <Content Include="Views\OwnerAssets\Index.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\Details.cshtml" />
+    <Content Include="Views\Reservations\Edit.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -560,6 +608,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DogDayCareRS.MVC.DATA.EF\DogDayCareRS.MVC.DATA.EF.csproj">
+      <Project>{562a12db-daf1-4c29-9ae3-17348b8093bc}</Project>
+      <Name>DogDayCareRS.MVC.DATA.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
