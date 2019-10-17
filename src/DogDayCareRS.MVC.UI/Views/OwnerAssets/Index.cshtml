@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="myTable display fa-cc-stripe cell-border">
+<table id="ownerAsset-table" class="display cell-border">
     <thead>
         <tr>
             <th>
@@ -36,9 +36,11 @@
             <th></th>
         </tr>
     </thead>
-    @foreach (var item in Model)
-    {
-        <tbody>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+
             <tr>
                 <td>
                     <img src="@Url.Content("~/Content/DogImages/" +  @item.AssetPhoto)" alt="A Reserve A Pup Client's doggo" class="doggoPictures" />
@@ -65,16 +67,27 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
                 </td>
             </tr>
-        </tbody>
-    }
+
+        }
+    </tbody>
 
 </table>
 
 
 @section scripts {
     <script>
-    $(document).ready(function () {
-        $('.myTable').DataTable();
-    });
+        $(document).ready(function () {
+            $('#ownerAsset-table').DataTable({
+                "order": [[1, 'asc'], [2, 'asc']],
+                'columnDefs': [
+                    {
+                        'orderable': false,
+                        'searchable': false,
+                        'targets': [0, 4, 6]
+                    },
+                ]
+            });
+            
+        });
     </script>
 }

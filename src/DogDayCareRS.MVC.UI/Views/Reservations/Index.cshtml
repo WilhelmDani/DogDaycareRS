@@ -13,7 +13,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="myTable display fa-cc-stripe cell-border">
+<table id="reservations-table" class="display cell-border">
     <thead>
         <tr>
             <th>
@@ -32,9 +32,9 @@
         </tr>
     </thead>
 
-    @foreach (var item in Model)
-    {
-        <tbody>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ReservationDate)
@@ -54,15 +54,23 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
                 </td>
             </tr>
-        </tbody>
-    }
+        }
+    </tbody>
 
-</table>
+    </table>
 
 @section scripts {
     <script>
-    $(document).ready(function () {
-        $('.myTable').DataTable();
-    });
+        $(document).ready(function () {
+            $('#reservations-table').DataTable({
+                'columnDefs': [
+                    {
+                        'orderable': false,
+                        'searchable': false,
+                        'targets': [4]
+                    },
+                ]
+            });
+        });
     </script>
 }

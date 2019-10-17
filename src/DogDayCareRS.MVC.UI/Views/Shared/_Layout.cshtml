@@ -47,17 +47,21 @@
                                     <li><a href="@Url.Action("About","Home")">About</a></li>
                                     <li><a href="@Url.Action("Services","Home")">Services</a></li>
                                     <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
-                                    @if (User.IsInRole("Admin") || (User.IsInRole("Client")) || (User.IsInRole("Employee"))) {<li><a href="@Url.Action("Reservations","Home")">Make a Reservation</a></li> }
+                                    @if (User.IsInRole("Admin") || (User.IsInRole("Client")) || (User.IsInRole("Employee")))
+                                    {
+                                        <li><a href="@Url.Action("Index","Reservations")">Make a Reservation</a></li>}
                                     <div class="dropdown">
-                                        <li><a href="@Url.Action("AdminPanel","Home")">Admin Panel</a></li>
-                                        <div class="dropdown-content">
-                                            <li><a href="@Url.Action("Index","Locations")">Locations</a></li>
-                                            <li><a href="@Url.Action("Index","UserDetails")">Clients</a></li>
-                                            <li><a href="@Url.Action("Index","OwnerAssets")">Pups</a></li>
-                                            @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
-                                            {<li><a href="@Url.Action("Index", "RolesAdmin")">Manage Roles</a></li>
-                                                <li><a href="@Url.Action("Index","UsersAdmin")">Manage Users</a></li>}
-                                        </div>
+                                        @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+                                        {
+                                            <li><a href="@Url.Action("AdminPanel","Home")">Admin Panel</a></li>
+                                            <div class="dropdown-content">
+                                                <li><a href="@Url.Action("Index","Locations")">Locations</a></li>
+                                                <li><a href="@Url.Action("Index","UserDetails")">Clients</a></li>
+                                                <li><a href="@Url.Action("Index","OwnerAssets")">Pups</a></li>
+                                                @if (User.IsInRole("Admin"))
+                                                {<li><a href="@Url.Action("Index", "RolesAdmin")">Manage&nbsp;Roles</a></li>
+                                                    <li><a href="@Url.Action("Index","UsersAdmin")">Manage Users</a></li>}
+                                            </div>}
                                     </div>
                                     @Html.Partial("_LoginPartial")
 
@@ -172,8 +176,12 @@
     <script src="~/Content/plugins/jquery-datepicker/jquery-ui.js"></script>
     <script src="~/Content/plugins/jquery-timepicker/jquery.timepicker.js"></script>
     <script src="~/Content/js/custom.js"></script>
+    <!--Datatable-->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.colVis.min.js"></script>
+    <!--Datepicker-->
+    @*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
 
     @RenderSection("scripts", required: false)
 
