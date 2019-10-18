@@ -96,6 +96,10 @@ namespace DogDayCareRS.MVC.DATA.EF/*.Metadata*/
     [MetadataType(typeof(UserDetailMetadata))]
     public partial class UserDetail
     {
-
+        [Display (Name = "Full Name")]
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
     }
 }

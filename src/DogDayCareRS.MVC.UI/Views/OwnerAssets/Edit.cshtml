@@ -9,10 +9,13 @@
 </div>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "OwnerAssets", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.OwnerAssetID)
+    @Html.HiddenFor(model => model.AssetPhoto)
+
     <div class="form-horizontal">
         <h2 class="moveToCenter sig_subtitle page_subtitle">Edit @Model.AssetName's Informaton</h2>
         <hr />

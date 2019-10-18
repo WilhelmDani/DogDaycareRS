@@ -1,4 +1,5 @@
-﻿@model DogDayCareRS.MVC.DATA.EF.OwnerAsset
+﻿@using System.Web.UI.WebControls
+@model DogDayCareRS.MVC.DATA.EF.OwnerAsset
 
 @{
     ViewBag.Title = "Create";
@@ -9,76 +10,90 @@
 </div>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(@*"Create", "OwnerAssets", FormMethod.Post, new { enctype = "multipart/form-data" }*@))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h2 class="moveToCenter sig_subtitle page_subtitle">Add A Pup</h2>
-    <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.AssetName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AssetName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AssetName, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.OwnerID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.OwnerID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    <div class="form-horizontal">
+        <h2 class="moveToCenter sig_subtitle page_subtitle">Add A&nbsp; Pup</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.AssetPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AssetPhoto, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AssetPhoto, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        <div class="form-group row">
+            @*@Html.LabelFor(model => model.AssetPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AssetPhoto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AssetPhoto, "", new { @class = "text-danger" })*@
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SpecialNotes, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SpecialNotes, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SpecialNotes, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.IsActive)
-                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+            <div class="col-md-10 resCreatePoosh">
+                @Html.LabelFor(model => model.AssetPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <input type="file" style="display: inline" name="fupImage" />
             </div>
         </div>
-    </div>
+        <div class="form-group row resCreatePoosh">
+            @Html.LabelFor(model => model.AssetName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AssetName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "[Pup's Name]" } })
+                @Html.ValidationMessageFor(model => model.AssetName, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.DateAdded, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.DateAdded, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DateAdded, "", new { @class = "text-danger" })
+        <div class="form-group row resCreatePoosh">
+            @Html.LabelFor(model => model.OwnerID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OwnerID, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "[Owner ID]" } })
+                @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group row resCreatePoosh">
+            @Html.LabelFor(model => model.SpecialNotes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SpecialNotes, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "[Any behavior/health concerns]" } })
+                @Html.ValidationMessageFor(model => model.SpecialNotes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row resCreatePoosh">
+            @Html.LabelFor(model => model.DateAdded, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateAdded, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "[Date the Pup was approved for daycare]" } })
+                @Html.ValidationMessageFor(model => model.DateAdded, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+        {
+            <div class="form-group row resCreatePoosh">
+                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.IsActive)
+                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>}
+        <div class="form-group row moveToCenter">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-warning" />
+                <div class="btn btn-primary backButton">  @Html.ActionLink("Cancle", "Index")</div>
+
+            </div>
+
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#DateAdded").datepicker();
+        });
+    </script>
 }

@@ -7,33 +7,56 @@
 <!-- Home -->
 <div class="home">
     <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
-    </div>
+</div>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+<div class="dataTables_Correct">
+    <table class="display cell-border" id="UsersAdmin-table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+
+                </th>
             </tr>
-        }
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
 
     </table>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#UsersAdmin-table').DataTable({
+                'columnDefs': [
+                    {
+                        'orderable': false,
+                        'searchable': false,
+                        'targets': [1]
+                    },
+                ]
+            });
+        });
+    </script>
+}

@@ -109,7 +109,8 @@
                                 </ul>
                             </div>
                             <br />
-                            <div class="button trans_200"><a href="#">Make a Reservation</a></div>
+                            @if (User.IsInRole("Admin") || (User.IsInRole("Client")) || (User.IsInRole("Employee"))) { 
+                        <div class="button trans_200"><a href="#">Make a Reservation</a></div>}
                         </div>
 
                     </div>
@@ -249,8 +250,9 @@
 
                                 </ul>
                             </div>
-                            <br/>
-                            <div class="button trans_200"><a href="#">Make a Reservation</a></div>
+                            <br />
+                            @if (User.IsInRole("Admin") || (User.IsInRole("Client")) || (User.IsInRole("Employee"))) { 
+                        <div class="button trans_200"><a href="#">Make a Reservation</a></div>}
                         </div>
                     </div>
                 </div>
@@ -329,7 +331,8 @@
                                 </ul>
                             </div>
                             <br />
-                            <div class="button trans_200"><a href="#">Make a Reservation</a></div>
+                            @if (User.IsInRole("Admin") || (User.IsInRole("Client")) || (User.IsInRole("Employee"))) { 
+                        <div class="button trans_200"><a href="#">Make a Reservation</a></div>}
                         </div>
                     </div>
                 </div>
