@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -670,12 +670,10 @@ section
 6. Intro
 *********************************/
 
-.intro
-{
-	width: 100%;
-	background: #FFFFFF;
-	padding-top: 102px;
-	padding-bottom: 102px;
+.intro {
+    width: 100%;
+    background: #FFFFFF;
+    padding: 40px 0px;
 }
 .intro_image
 {
@@ -694,7 +692,6 @@ section
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
-	right: -165px;
 	width: 679px;
 	background: #FFFFFF;
 	border: solid 2px #b49383;

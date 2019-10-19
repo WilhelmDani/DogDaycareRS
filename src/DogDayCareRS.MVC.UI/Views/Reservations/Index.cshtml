@@ -10,9 +10,10 @@
     <br />
 </div>
 
-<p>
+
+<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%;">
     @Html.ActionLink("Create New", "Create")
-</p>
+</div>
 <div class="dataTables_Correct">
     <table id="reservations-table" class="display cell-border">
         <thead>
@@ -27,7 +28,7 @@
                     @Html.DisplayNameFor(model => model.OwnerAsset.AssetName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OwnerAsset.OwnerID)
+                    @Html.DisplayNameFor(model => model.OwnerAsset.UserID)
                 </th>
                 <th></th>
             </tr>
@@ -47,7 +48,7 @@
                         @Html.DisplayFor(modelItem => item.OwnerAsset.AssetName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.OwnerAsset.OwnerID)
+                        @Html.DisplayFor(modelItem => item.OwnerAsset.UserID)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |

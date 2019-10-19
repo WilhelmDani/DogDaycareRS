@@ -7,9 +7,10 @@
 <div class="home2">
     <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
 </div>
-<p>
+
+<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%;">
     @Html.ActionLink("Create New", "Create")
-</p>
+</div>
 <div class="dataTables_Correct">
     <table id="ownerAsset-table" class="display cell-border">
         <thead>
@@ -22,7 +23,7 @@
                     @Html.DisplayNameFor(model => model.AssetName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OwnerID)
+                    @Html.DisplayNameFor(model => model.UserID)
                 </th>
 
                 <th>
@@ -50,7 +51,7 @@
                         @Html.DisplayFor(modelItem => item.AssetName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.OwnerID)
+                        @Html.DisplayFor(modelItem => item.UserID)
                     </td>
 
                     <td>
@@ -89,7 +90,7 @@
                     },
                 ]
             });
-            
+
         });
     </script>
 }

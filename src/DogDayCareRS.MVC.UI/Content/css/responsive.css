@@ -30,7 +30,7 @@
 	.intro_content
 	{
 		width: 600px;
-		right: -100px;
+		
 	}
 }
 
@@ -40,7 +40,11 @@
 
 @media only screen and (max-width: 1440px)
 {
-	
+    .intro_content {
+       
+        position: relative;
+      
+    }
 }
 
 /************

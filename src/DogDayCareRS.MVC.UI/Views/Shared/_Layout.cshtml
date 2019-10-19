@@ -51,10 +51,16 @@
                                     <li><a href="@Url.Action("About","Home")">About</a></li>
                                     <li><a href="@Url.Action("Services","Home")">Services</a></li>
                                     <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
-                                    @if (User.IsInRole("Client"))
-                                    {
-                                        <li><a href="@Url.Action("Index","Reservations")">Make a Reservation</a></li>
-                                        <li><a href="@Url.Action("Index","OwnerAssets")">My Pups</a></li>}
+                                    <div class="dropdown">
+                                        @if (User.IsInRole("Client"))
+                                        {
+                                            <li><a href="@Url.Action("Details","UserDetails")">My Info</a></li>
+                                            <div class="dropdown-content">
+                                                <li><a href="@Url.Action("Index","Reservations")">Make a Reservation</a></li>
+                                                <li><a href="@Url.Action("Index","OwnerAssets")">My Pups</a></li>
+
+                                            </div>}
+                                    </div>
                                     <div class="dropdown">
                                         @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
                                         {

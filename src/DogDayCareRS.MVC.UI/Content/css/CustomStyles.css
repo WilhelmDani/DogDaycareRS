@@ -1,4 +1,10 @@
-﻿.dataTables_Correct {
+﻿.fixContent {
+    display: flex;
+    justify-content: center;
+    text-align: -webkit-center;
+}
+
+.dataTables_Correct {
     width: 95%;
     margin: auto;
 }
@@ -39,6 +45,24 @@ intro_FixedContentReservations{
 
     .backButton:hover {
         background-color: darkred;
+    }
+
+.createButton {
+    height: min-content;
+    color: black;
+    
+    border: none;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+    .createButton a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .createButton:hover {
+        background-color: darkgoldenrod;
     }
 
 

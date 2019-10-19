@@ -42,7 +42,7 @@ namespace DogDayCareRS.MVC.DATA.EF/*.Metadata*/
         public string AssetName { get; set; }
         [Required]
         [Display(Name = "Owner ID")]
-        public string OwnerID { get; set; }
+        public string UserID { get; set; }
         [Required]
         [Display(Name = "Pup Photo")]
         public string AssetPhoto { get; set; }

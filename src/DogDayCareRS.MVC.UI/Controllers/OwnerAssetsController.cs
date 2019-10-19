@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DogDayCareRS.MVC.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace DogDayCareRS.MVC.UI.Controllers
 {
@@ -17,7 +18,9 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // GET: OwnerAssets
         public ActionResult Index()
         {
-            return View(db.OwnerAssets.ToList());
+            var userId = User.Identity.GetUserId();
+            var ownerAssets = User.IsInRole("Client") ? db.OwnerAssets.Where(o => o.UserID == userId) : db.OwnerAssets;
+            return View(ownerAssets.ToList());
         }
 
         // GET: OwnerAssets/Details/5

@@ -14,8 +14,17 @@ namespace DogDayCareRS.MVC.DATA.EF
     
     public partial class UserDetail
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserDetail()
+        {
+            this.OwnerAssets = new HashSet<OwnerAsset>();
+        }
+    
         public string UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OwnerAsset> OwnerAssets { get; set; }
     }
 }

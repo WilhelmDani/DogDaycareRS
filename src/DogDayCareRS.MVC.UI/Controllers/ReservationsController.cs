@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DogDayCareRS.MVC.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace DogDayCareRS.MVC.UI.Controllers
 {
+    [Authorize]
     public class ReservationsController : Controller
     {
         private DogDaycareRSEntities db = new DogDaycareRSEntities();
@@ -17,7 +19,10 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
-            var reservations = db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset);
+            var userId = User.Identity.GetUserId();
+            var reservations = User.IsInRole("Client")
+            ? db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset).Where(r => r.OwnerAsset.UserID == userId)
+            : db.Reservations.Include(r => r.Location).Include(r => r.OwnerAsset);
             return View(reservations.ToList());
         }
 
@@ -36,11 +41,14 @@ namespace DogDayCareRS.MVC.UI.Controllers
             return View(reservation);
         }
 
-        // GET: Reservations/Create
+        // GET: Reservations/Create]
         public ActionResult Create()
         {
-            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
-            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetName");
+            var isAdmin = User.IsInRole("Admin");
+            var isNotClient = !User.IsInRole("Client");
+            var userId = User.Identity.GetUserId();
+            ViewBag.LocationID = new SelectList(db.Locations.Where(l => isAdmin || !l.IsAtLimit), "LocationID", "LocationName");
+            ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets.Where(o => isNotClient || o.UserID == userId), "OwnerAssetID", "AssetName");
             return View();
         }
 
@@ -61,6 +69,7 @@ namespace DogDayCareRS.MVC.UI.Controllers
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);
             ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets, "OwnerAssetID", "AssetName", reservation.OwnerAssetID);
             return View(reservation);
+
         }
 
         // GET: Reservations/Edit/5

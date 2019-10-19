@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DogDayCareRS.MVC.DATA.EF;
+using DogDayCareRS.MVC.UI.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace DogDayCareRS.MVC.UI.Controllers
 {
@@ -23,11 +27,12 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // GET: UserDetails/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
+            var currentUserId = User.Identity.GetUserId();
+            if (id == null && currentUserId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserDetail userDetail = db.UserDetails.Find(id);
+            UserDetail userDetail = db.UserDetails.Find(id ?? currentUserId);
             if (userDetail == null)
             {
                 return HttpNotFound();
@@ -54,7 +59,7 @@ namespace DogDayCareRS.MVC.UI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+                
             return View(userDetail);
         }
 
