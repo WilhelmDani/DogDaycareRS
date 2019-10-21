@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace DogDayCareRS.MVC.UI.Controllers
 {
+    [Authorize]
     public class OwnerAssetsController : Controller
     {
         private DogDaycareRSEntities db = new DogDaycareRSEntities();

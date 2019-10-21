@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "NewClientPage";
+}
+
+<!-- Home -->
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/boxerBoiBackground2.png" data-speed="0.8"></div>
+   
+</div>
+
+<!-- Intro -->
+<div class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="intro_content">
+                    <div class="home_subtitle page_subtitle">Welcome to Reserve A Pup...</div>
+                    <div class="intro_text">
+                        <p>
+
+                            As a new Customer, we just need some information about you and your Pup.
+                            <br /><br />
+
+                            1) Let us know about you by filling out this short form :  <div class="btn btn-primary backButton">@Url.Action("Create", "Index")</div>
+
+                            <br /><br />Today we have four locations all over the Kansas City metro area and growing; “Stop and Wag” being the largest with a capacity of 200 dogs and more than 20 staff members!
+
+                            <br /><br />In early 2019, we created this Reservation System to help our clients schedule their fur babies a day of fun and play to get all that energy out! We of course accept walk-ins at each facility, but for the safety of our client's dogs and our staff, we have a capacity limit for each location depending on it's size. If one location is at full capacity, we are more than happy to help schedule our clients at one of our other facilities.
+
+                        </p>
+
+                        <br />
+                        <div><div class="button moveToCenter trans_200"><a href="@Url.Action("Create","Reservations")">Make a Reservation</a></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

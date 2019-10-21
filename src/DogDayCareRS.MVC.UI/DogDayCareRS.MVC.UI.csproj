@@ -228,37 +228,21 @@
     <Content Include="Content\images\aboutdoggo.png" />
     <Content Include="Content\images\Aboutintrodoggo1.png" />
     <Content Include="Content\images\Aboutintrodoggo3.png" />
-    <Content Include="Content\images\about_intro.jpg" />
     <Content Include="Content\images\Admindoggo.png" />
     <Content Include="Content\images\blog.jpg" />
     <Content Include="Content\images\blog_1.jpg" />
     <Content Include="Content\images\blog_2.jpg" />
-    <Content Include="Content\images\blog_3.jpg" />
-    <Content Include="Content\images\blog_4.jpg" />
-    <Content Include="Content\images\blog_5.jpg" />
-    <Content Include="Content\images\blog_6.jpg" />
-    <Content Include="Content\images\chef_1.jpg" />
-    <Content Include="Content\images\chef_2.jpg" />
-    <Content Include="Content\images\chef_3.jpg" />
-    <Content Include="Content\images\chef_4.jpg" />
+    <Content Include="Content\images\boxerBoiBackground2.png" />
     <Content Include="Content\images\contact.jpg" />
     <Content Include="Content\images\contactDoggo.png" />
     <Content Include="Content\images\DDRSfavicon.png" />
     <Content Include="Content\images\DDRSLogo.png" />
-    <Content Include="Content\images\deserts.jpg" />
     <Content Include="Content\images\elements.jpg" />
     <Content Include="Content\images\home.jpg" />
     <Content Include="Content\images\Homedoggo.jpg" />
     <Content Include="Content\images\Homedoggo2.jpg" />
     <Content Include="Content\images\Homedoggo3.png" />
     <Content Include="Content\images\Homedoggo4.png" />
-    <Content Include="Content\images\icon_1.png" />
-    <Content Include="Content\images\icon_2.png" />
-    <Content Include="Content\images\icon_3.png" />
-    <Content Include="Content\images\icon_4.png" />
-    <Content Include="Content\images\icon_5.png" />
-    <Content Include="Content\images\icon_6.png" />
-    <Content Include="Content\images\icon_7.png" />
     <Content Include="Content\images\indexdoggo.png" />
     <Content Include="Content\images\intro_1.jpg" />
     <Content Include="Content\images\intro_2.jpg" />
@@ -266,10 +250,6 @@
     <Content Include="Content\images\menu.jpg" />
     <Content Include="Content\images\quote.png" />
     <Content Include="Content\images\reservations.jpg" />
-    <Content Include="Content\images\sig.jpg" />
-    <Content Include="Content\images\sig_1.jpg" />
-    <Content Include="Content\images\sig_2.jpg" />
-    <Content Include="Content\images\sig_3.jpg" />
     <Content Include="Content\images\starters.jpg" />
     <Content Include="Content\images\tab.jpg" />
     <Content Include="Content\images\testimonials.jpg" />
@@ -597,6 +577,7 @@
     <Content Include="Views\Reservations\Details.cshtml" />
     <Content Include="Views\Reservations\Edit.cshtml" />
     <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\Home\NewClientPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

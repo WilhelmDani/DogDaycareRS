@@ -15,7 +15,7 @@ namespace DogDayCareRS.MVC.UI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+       
         public ActionResult About()
         {
             
@@ -72,6 +72,11 @@ namespace DogDayCareRS.MVC.UI.Controllers
         public ActionResult Services()
         {
 
+            return View();
+        }
+
+        public ActionResult NewClientPage()
+        {
             return View();
         }
     }

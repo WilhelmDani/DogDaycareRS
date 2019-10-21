@@ -1,13 +1,48 @@
 ﻿@{
     ViewBag.Title = "DEMO purpose Email Link";
 }
-<div class="home2">
-    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+@*<div class="home2">
+        <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+    </div>
+    <p class="text-info">
+        Please check your email and confirm your email address.
+    </p>
+    <p class="text-danger">
+        For DEMO only: You can click this link to confirm the email: <a href="@ViewBag.Link">link</a>
+        Please change this code to register an email service in IdentityConfig to send an email.
+    </p>*@
+
+
+<!-- Home -->
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/boxerBoiBackground2.png" data-speed="0.8"></div>
+
 </div>
-<p class="text-info">
-    Please check your email and confirm your email address.
-</p>
-<p class="text-danger">
-    For DEMO only: You can click this link to confirm the email: <a href="@ViewBag.Link">link</a>
-    Please change this code to register an email service in IdentityConfig to send an email.
-</p>
+
+<!-- Intro -->
+<div class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="intro_content">
+                    <div class="home_subtitle page_subtitle">Welcome to Reserve A Pup...</div>
+                    <div class="intro_text">
+                        <p>
+
+                            As a new Client, we just need some information about you and your Pup to get you started.
+                            <br /><br />
+
+                            Let us know about you by filling out this short form : <a class="btn btn-primary backButton" href="@Url.Action("Create", "UserDetails")">Client Info</a>
+
+
+                            <br /><br />
+                            Once you finish telling us about you, just use the navigation bar to add your pups to our database and you're all set to make future reservations!
+
+                            <br /><br /> Thank you for signing up with us, we look forward to pampering your pup at any of our locations! 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

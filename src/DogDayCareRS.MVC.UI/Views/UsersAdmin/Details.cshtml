@@ -54,9 +54,12 @@
                                             </tr>
                                         }
                                     </table>
-                                    <p>
-                                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                                        @Html.ActionLink("Back to List", "Index")
+                                    <p class="moveToCenter">
+                                        <div class="btn btn-primary backButton"> @Html.ActionLink("Back to Roles", "Index")</div>
+                                        <div class="btn btn-warning">
+                                            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                                        </div>
+
                                     </p>
                                     <br />
                                 </div>

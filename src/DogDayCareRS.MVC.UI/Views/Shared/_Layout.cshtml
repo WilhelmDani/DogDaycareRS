@@ -106,10 +106,34 @@
         <div class="menu trans_800">
             <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="menu.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li><a href="@Url.Action("About","Home")">About</a></li>
+                    <li><a href="@Url.Action("Services","Home")">Services</a></li>
+                    <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                    <div class="dropdown">
+                        @if (User.IsInRole("Client"))
+                        {
+                            <li><a href="@Url.Action("Details","UserDetails")">My Info</a></li>
+                            <div class="dropdown-content">
+                                <li><a href="@Url.Action("Index","Reservations")">Make a Reservation</a></li>
+                                <li><a href="@Url.Action("Index","OwnerAssets")">My Pups</a></li>
+
+                            </div>}
+                    </div>
+                    <div class="dropdown">
+                        @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+                        {
+                            <li><a href="@Url.Action("Index","Manage")">Admin Panel</a></li>
+                            <div class="dropdown-content">
+                                <li><a href="@Url.Action("Index","Reservations")">Reservations</a></li>
+                                <li><a href="@Url.Action("Index","Locations")">Locations</a></li>
+                                <li><a href="@Url.Action("Index","UserDetails")">Clients</a></li>
+                                <li><a href="@Url.Action("Index","OwnerAssets")">Pups</a></li>
+                                @if (User.IsInRole("Admin"))
+                                {<li><a href="@Url.Action("Index", "RolesAdmin")">Manage&nbsp;Roles</a></li>
+                                    <li><a href="@Url.Action("Index","UsersAdmin")">Manage Users</a></li>}
+                            </div>}
+                    </div>
                 </ul>
             </div>
 
@@ -133,14 +157,20 @@
                         </div>
                         <div class="copyright">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+                            <p>
+                                Created by <a href="http://dani-dev.com/" target="_blank">Danielle Wilhelm</a>
+                            </p>
+                            <p>&bull; Original template : <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                            <p>
+                                &bull;  Dog animation : <a href="https://codepen.io/davidkpiano/details/BGxgLa" target="_blank">David Khourshid</a>
+                            </p>
                             <p style="line-height: 1.2;">
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> All rights reserved | Original template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                 Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved |
 
                             </p>
-                            <p>
-                                Cute dog animation by <a href="https://codepen.io/davidkpiano/details/BGxgLa" target="_blank">David Khourshid</a> on codepen.io
-                            </p>
+
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                     </div>
@@ -196,7 +226,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.colVis.min.js"></script>
     <!--Datepicker-->
- 
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     @RenderSection("scripts", required: false)

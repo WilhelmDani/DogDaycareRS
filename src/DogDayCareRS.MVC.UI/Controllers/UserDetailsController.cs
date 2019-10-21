@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace DogDayCareRS.MVC.UI.Controllers
 {
+    [Authorize]
     public class UserDetailsController : Controller
     {
         private DogDaycareRSEntities db = new DogDaycareRSEntities();
@@ -21,7 +22,14 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // GET: UserDetails
         public ActionResult Index()
         {
-            return View(db.UserDetails.ToList());
+            var userId = User.Identity.GetUserId();
+            //var userDetails = db.UserDetails.ToList();
+            //if (User.IsInRole("Client"))
+            //{
+            //    userDetails = db.UserDetails.Where(ud => ud.UserID == userId).ToList();
+            //}
+            var userDetails = User.IsInRole("Client") ? db.UserDetails.Where(u => u.UserID == userId) : db.UserDetails;
+            return View(userDetails);
         }
 
         // GET: UserDetails/Details/5
@@ -51,7 +59,7 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,FirstName,LastName")] UserDetail userDetail)
+        public ActionResult Create([Bind(Include = "FirstName,LastName")] UserDetail userDetail)
         {
             if (ModelState.IsValid)
             {

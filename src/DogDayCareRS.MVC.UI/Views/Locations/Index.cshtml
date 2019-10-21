@@ -5,13 +5,13 @@
 }
 
 <div class="home">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Homedoggo3.png" data-speed="0.8"></div>
 </div>
 
-
-<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%;">
-    @Html.ActionLink("Create New", "Create")
-</div>
+@if (User.IsInRole("Admin") || (User.IsInRole("Employee"))) { 
+    <div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
+        @Html.ActionLink("Create New", "Create")
+    </div>}
 <div class="dataTables_Correct">
     <table class="display cell-border" id="Locations-table">
         <thead>
@@ -59,15 +59,18 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.ReservationLimit)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.LocationID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.LocationID })
-                    </td>
+                    @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.LocationID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.LocationID })
+                        </td>}
                 </tr>
             }
         </tbody>
     </table>
+    <hr/>
 </div>
 
 

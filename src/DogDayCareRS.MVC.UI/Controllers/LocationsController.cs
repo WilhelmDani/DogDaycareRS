@@ -10,6 +10,7 @@ using DogDayCareRS.MVC.DATA.EF;
 
 namespace DogDayCareRS.MVC.UI.Controllers
 {
+    [Authorize]
     public class LocationsController : Controller
     {
         private DogDaycareRSEntities db = new DogDaycareRSEntities();

@@ -1131,8 +1131,8 @@ section
 {
 	width: 100%;
 	background: #232323;
-	padding-top: 70px;
-	padding-bottom: 60px;
+	padding-top: 50px;
+	padding-bottom: 40px;
 }
 .footer_logo_title
 {
@@ -1154,7 +1154,7 @@ section
 	font-size: 13px;
 	color: rgba(255,255,255,0.41);
 	line-height: 0.75;
-	margin-top: 22px;
+	
 }
 .footer_about p
 {
@@ -1162,7 +1162,7 @@ section
 }
 .footer_contact ul li:not(:last-child)
 {
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 }
 .footer_contact_title
 {

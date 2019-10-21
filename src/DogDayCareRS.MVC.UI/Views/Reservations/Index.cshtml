@@ -5,13 +5,25 @@
     ViewBag.Title = "Index";
 }
 
-<div class="home2">
-    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
-    <br />
+<!-- Home -->
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Homedoggo.jpg" data-speed="0.8"></div>
+    <div class="home_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content text-center">
+                        @if (User.IsInRole("Client")) { 
+                        <div class="home_title"><h1>My Reservations</h1></div>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%;">
+<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
     @Html.ActionLink("Create New", "Create")
 </div>
 <div class="dataTables_Correct">

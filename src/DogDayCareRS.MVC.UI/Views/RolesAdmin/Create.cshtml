@@ -14,8 +14,9 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <br/>
-        <h2 class="moveToCenter">Add a New Role.</h2>
+        <br />
+        <h2 class="moveToCenter sig_subtitle page_subtitle">Add a New Role.</h2>
+
         <hr />
         @Html.ValidationSummary(true)
 
@@ -27,17 +28,16 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="form-group moveToCenter">
+            <input type="submit" value="Create" class="btn btn-warning" />
+            <div class="btn btn-primary backButton">
+                @Html.ActionLink("Back to Roles", "Index")
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

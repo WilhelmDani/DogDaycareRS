@@ -54,8 +54,11 @@
                                 </div>
                             </div>
                             <p class="moveToCenter">
-                                @Html.ActionLink("Edit", "Edit", new { id = Model.LocationID }) |
-                                @Html.ActionLink("Back to List", "Index")
+                                <div class="btn btn-primary backButton"> @Html.ActionLink("Back to Reservations", "Index")</div>
+                                <div class="btn btn-warning">
+                                    @Html.ActionLink("Edit", "Edit", new { id = Model.LocationID })
+                                </div>
+                                
                             </p>
                             <br />
                         </div>
