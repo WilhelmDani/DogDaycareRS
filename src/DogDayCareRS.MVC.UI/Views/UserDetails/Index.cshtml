@@ -4,61 +4,69 @@
     ViewBag.Title = "Index";
 }
 
-<div class="home2">
-    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/boxerBoiBackground2.png" data-speed="0.8"></div>
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/boxerBoiBackground2.png" data-speed="0.8"></div>
 </div>
 
-<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%;">
+<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top:2%;">
     @Html.ActionLink("Create New", "Create")
 </div>
-<div class="dataTables_Correct">
-    <table class="display cell-border" id="clients-table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LastName)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
+<div class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col fixContent">
+                <div class="dataTables_Correct">
+                    <table class="display cell-border" id="clients-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FirstName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.LastName)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-@section scripts {
-    <script>
-        $(document).ready(function () {
-            $('#clients-table').DataTable({
-                'columnDefs': [
-                    {
-                        'orderable': false,
-                        'searchable': false,
-                        'targets': [2]
-                    },
-                ]
-            });
-        });
-    </script>
-}
+                @section scripts {
+                    <script>
+                        $(document).ready(function () {
+                            $('#clients-table').DataTable({
+                                'columnDefs': [
+                                    {
+                                        'orderable': false,
+                                        'searchable': false,
+                                        'targets': [2]
+                                    },
+                                ]
+                            });
+                        });
+                    </script>
+                }

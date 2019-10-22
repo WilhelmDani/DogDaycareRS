@@ -107,7 +107,7 @@
                         <div class="sig_title"><h1>A family owned business since 2003!</h1></div>
                         <div class="rating_r sig_rating rating_r_5" style="text-align: center;"><i></i><i></i><i></i><i></i><i></i></div>
                         <div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
-                            <div class="sig_name"> Now you can easily reserve a spot for your pup at any of our Kansas City and surrounding Metro area locations with an easy click!</div>
+                            <div class="sig_name"> Now you can easily reserve a spot for your pup at any of our Kansas City and surrounding Metro area locations with a few easy clicks!</div>
                            
                         </div>
                         @*<div class="sig_content_list">
@@ -118,7 +118,8 @@
                                 <li>Veggies</li>
                             </ul>
                         </div>*@
-                        <div class="button sig_button trans_200"><a href="@Url.Action("Create","Reservations")">Make a Reservation</a></div>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Employee") || User.IsInRole("Client")) {
+                        <div class="button sig_button trans_200"><a href="@Url.Action("Create","Reservations")">Make a Reservation</a></div> }
                     </div>
                 </div>
             </div>

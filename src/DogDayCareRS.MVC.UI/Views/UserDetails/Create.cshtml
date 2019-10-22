@@ -4,8 +4,8 @@
     ViewBag.Title = "Create";
 }
 
-<div class="home2">
-    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
 </div>
 
     @using (Html.BeginForm())
@@ -13,7 +13,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4 class="moveToCenter intro_subtitle page_subtitle">Add A New Client</h4>
+            <h4 class="moveToCenter intro_subtitle page_subtitle" style="margin-top:2%;">Add A New Client</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))

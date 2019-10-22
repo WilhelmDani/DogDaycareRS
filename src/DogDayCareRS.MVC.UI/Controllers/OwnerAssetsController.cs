@@ -50,10 +50,36 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OwnerAssetID,AssetName,OwnerID,AssetPhoto,SpecialNotes,IsActive,DateAdded")] OwnerAsset ownerAsset)
+        public ActionResult Create([Bind(Include = "OwnerAssetID,AssetName,UserID,AssetPhoto,SpecialNotes,IsActive,DateAdded")] OwnerAsset ownerAsset, HttpPostedFileBase fupImage)
         {
+                 if (ownerAsset.UserID == null) {
+               ownerAsset.UserID = User.Identity.GetUserId();
+            }
+
+            //File upload for create
             if (ModelState.IsValid)
             {
+
+
+                string imgName = "noImage.png";
+                if (fupImage != null)
+                {
+                    imgName = fupImage.FileName;
+                    string ext = imgName.Substring(imgName.LastIndexOf('.'));
+                    string[] goodExts = { "jpeg", ".jpg", ".gif", ".png" };
+
+                    if (goodExts.Contains(ext.ToLower()) && (fupImage.ContentLength <= 4194304))
+                    {
+                        //imgName = Guid.NewGuid() + ext;
+                        fupImage.SaveAs(Server.MapPath("~/Content/Dogimages/" + imgName));
+                    }
+                    else
+                    {
+                        imgName = "noImage.png";
+                    }
+                }
+                ownerAsset.AssetPhoto = imgName;
+                db.Entry(ownerAsset).State = EntityState.Modified;
                 db.OwnerAssets.Add(ownerAsset);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,10 +108,43 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OwnerAssetID,AssetName,OwnerID,AssetPhoto,SpecialNotes,IsActive,DateAdded")] OwnerAsset ownerAsset)
+        public ActionResult Edit([Bind(Include = "OwnerAssetID,AssetName,UserID,AssetPhoto,SpecialNotes,IsActive,DateAdded")] OwnerAsset ownerAsset, HttpPostedFileBase fupImage)
         {
+            if (ownerAsset.UserID == null) {
+               ownerAsset.UserID = User.Identity.GetUserId();
+            }
+
             if (ModelState.IsValid)
             {
+                //File upload for Edit
+                if (fupImage != null)
+                {
+                    string imgName = fupImage.FileName;
+                    imgName = fupImage.FileName;
+                    string ext = imgName.Substring(imgName.LastIndexOf('.'));
+                    string[] goodExts = { ".jpeg", ".jpg", ".gif", ".png" };
+
+                    if (goodExts.Contains(ext.ToLower()) && (fupImage.ContentLength <= 4194304))
+                    {
+                        fupImage.SaveAs(Server.MapPath("~/Content/dogImages/" + imgName));
+
+                        if (ownerAsset.AssetPhoto != null && ownerAsset.AssetPhoto != "noImage.png")
+                        {
+                            System.IO.File.Delete(Server.MapPath("~/Content/dogImages/" + ownerAsset.AssetPhoto));
+                        }
+                        ownerAsset.AssetPhoto = imgName;
+                    }
+                    else
+                    {
+                        imgName = "noImage.png";
+                        throw new ApplicationException("Incorrect file type. 1) Please use one of the following: (png, jpg, jpeg, or gif). " +
+                            " 2) File size may exceed the 4MB limit. Please reduce the file size and try again.");
+                                   }
+
+                }
+
+
+
                 db.Entry(ownerAsset).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -113,7 +172,12 @@ namespace DogDayCareRS.MVC.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+           
             OwnerAsset ownerAsset = db.OwnerAssets.Find(id);
+            if (ownerAsset.AssetPhoto != null && ownerAsset.AssetPhoto != "noImage.png")
+            {
+                System.IO.File.Delete(Server.MapPath("~/Content/dogImages/" + ownerAsset.AssetPhoto));
+            }
             db.OwnerAssets.Remove(ownerAsset);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -22,74 +22,93 @@
 </div>
 
 
-<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
-    @Html.ActionLink("Create New", "Create")
+
+    <div class="row">
+        <div class="container">
+            <div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
+                @Html.ActionLink("Add A Pup", "Create")
+            </div>
+            <div class="col">
+
+                <div class="dataTables_Correct" style="margin-bottom:2%;">
+                    <table id="ownerAsset-table" class="display cell-border">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AssetPhoto)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AssetName)
+                                </th>
+
+                                <th>
+                                    @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+                                    {
+                                        @Html.DisplayNameFor(model => model.UserID)}
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SpecialNotes)
+                                </th>
+
+                                <th>
+                                    @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+                                    {
+                                        @Html.DisplayNameFor(model => model.IsActive)}
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateAdded)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("Details", new { id= item.OwnerAssetID})">   <img src="@Url.Content("~/Content/DogImages/" +  @item.AssetPhoto)" alt="A Reserve A Pup Client's doggo" class="doggoPictures" /></a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AssetName)
+                                    </td>
+
+                                    <td>
+                                        @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+                                        {
+                                            @Html.DisplayFor(modelItem => item.UserID)}
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SpecialNotes)
+                                    </td>
+
+                                    <td>
+                                        @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+                                        {
+                                            @Html.DisplayFor(modelItem => item.IsActive)}
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateAdded)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
 </div>
-<div class="dataTables_Correct">
-    <table id="ownerAsset-table" class="display cell-border">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssetPhoto)
-
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssetName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserID)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.SpecialNotes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateAdded)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model)
-            {
-
-                <tr>
-                    <td>
-                        <a href="@Url.Action("Details", new { id= item.OwnerAssetID})">   <img src="@Url.Content("~/Content/DogImages/" +  @item.AssetPhoto)" alt="A Reserve A Pup Client's doggo" class="doggoPictures" /></a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AssetName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserID)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SpecialNotes)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateAdded)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
-                    </td>
-                </tr>
-
-            }
-        </tbody>
-
-    </table>
-</div>
-
 
 @section scripts {
     <script>

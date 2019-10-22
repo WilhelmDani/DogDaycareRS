@@ -4,56 +4,60 @@
     ViewBag.Title = "Edit";
 }
 
-<div class="home2">
-    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <h2 class="moveToCenter sig_subtitle page_subtitle">Edit @Model.OwnerAsset.AssetName's Reservation</h2>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ReservationID)
 
-<div class="form-horizontal">
-    <h2 class="moveToCenter sig_subtitle page_subtitle">Edit @Model.OwnerAsset.AssetName's Reservation</h2>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.ReservationID)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LocationID, "LocationID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("LocationID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.LocationID, "LocationID", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("LocationID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ReservationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ReservationDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ReservationDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OwnerAssetID, "OwnerAssetID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("OwnerAssetID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.OwnerAssetID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group moveToCenter">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-warning" />
+                            <div class="btn btn-primary backButton">@Html.ActionLink("Cancle", "Index")</div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            </div>
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ReservationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ReservationDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ReservationDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.OwnerAssetID, "OwnerAssetID", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("OwnerAssetID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.OwnerAssetID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group moveToCenter">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-warning" />
-            <div class="btn btn-primary backButton">@Html.ActionLink("Cancle", "Index")</div>
-        </div>
-    </div>
-</div>
-}
-
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

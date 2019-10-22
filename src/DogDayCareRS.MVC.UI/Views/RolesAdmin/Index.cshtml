@@ -10,41 +10,50 @@
 </div>
 
 
-<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
-    @Html.ActionLink("Create New", "Create")
-</div>
 
-<div class="dataTables_Correct">
-    <table class="display cell-border" id="UsersAdmin-table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
+@if (User.IsInRole("Admin") || (User.IsInRole("Employee"))) { 
+    <div class="container">
+        <div class="row">
+            <div class="col">
 
-                </th>
-            </tr>
-        </thead>
+                <div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
+                    @Html.ActionLink("Create New", "Create")
+                </div>
+                <div class="dataTables_Correct">
+                    <table class="display cell-border" id="UsersAdmin-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
 
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
-            }
-        </tbody>
+                                </th>
+                            </tr>
+                        </thead>
 
-    </table>
-</div>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
 @section scripts {
     <script>

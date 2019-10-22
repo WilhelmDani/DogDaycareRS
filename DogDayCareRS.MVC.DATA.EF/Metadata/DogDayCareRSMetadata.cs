@@ -40,7 +40,6 @@ namespace DogDayCareRS.MVC.DATA.EF/*.Metadata*/
         [Required]
         [Display(Name = "Pup's Name")]
         public string AssetName { get; set; }
-        [Required]
         [Display(Name = "Owner ID")]
         public string UserID { get; set; }
         [Required]

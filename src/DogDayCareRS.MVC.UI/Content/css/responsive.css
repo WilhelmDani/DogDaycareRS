@@ -62,15 +62,17 @@
 
 @media only screen and (max-width: 1280px)
 {
-	
+    .doof-wrapper {
+        position: absolute;
+        top: 425px;
+        left: calc(50% - 75px);
+    }
 }
 
 /************
 4. 1199px
 ************/
 
-@media only screen and (max-width: 1199px)
-{
 	.main_nav
 	{
 		margin-left: 70px;
@@ -96,7 +98,6 @@
 	{
 		margin-left: 0px;
 	}
-}
 
 /************
 4. 1100px

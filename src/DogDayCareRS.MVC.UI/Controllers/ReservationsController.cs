@@ -44,10 +44,9 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // GET: Reservations/Create]
         public ActionResult Create()
         {
-            var isAdmin = User.IsInRole("Admin");
             var isNotClient = !User.IsInRole("Client");
             var userId = User.Identity.GetUserId();
-            ViewBag.LocationID = new SelectList(db.Locations.Where(l => isAdmin || !l.IsAtLimit), "LocationID", "LocationName");
+            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName");
             ViewBag.OwnerAssetID = new SelectList(db.OwnerAssets.Where(o => isNotClient || o.UserID == userId), "OwnerAssetID", "AssetName");
             return View();
         }
@@ -61,9 +60,16 @@ namespace DogDayCareRS.MVC.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var currentReservationCount = db.Reservations.Count(r => r.ReservationDate == reservation.ReservationDate && r.LocationID == reservation.LocationID);
+                var reservationLimit = db.Locations.Single(l => l.LocationID == reservation.LocationID).ReservationLimit;
+
+                if (currentReservationCount < reservationLimit) { 
+                    db.Reservations.Add(reservation);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.ErrorMessage = "We're sorry, this location is at capacity for this selected day. Please send an email or call for any questions/concerns.";
             }
 
             ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "LocationName", reservation.LocationID);

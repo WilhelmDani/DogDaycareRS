@@ -51,7 +51,14 @@ namespace DogDayCareRS.MVC.UI.Controllers
         // GET: UserDetails/Create
         public ActionResult Create()
         {
-            return View();
+            var currentUserId = User.Identity.GetUserId();
+            UserDetail userDetail = db.UserDetails.Find(currentUserId);
+            if (!User.IsInRole("Client") || userDetail == null)
+            {
+                return View();
+            }
+
+            return View("Details", userDetail);
         }
 
         // POST: UserDetails/Create
@@ -63,6 +70,7 @@ namespace DogDayCareRS.MVC.UI.Controllers
         {
             if (ModelState.IsValid)
             {
+                userDetail.UserID = User.Identity.GetUserId();
                 db.UserDetails.Add(userDetail);
                 db.SaveChanges();
                 return RedirectToAction("Index");

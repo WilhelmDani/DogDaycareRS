@@ -217,7 +217,7 @@
     <Content Include="Content\DogImages\JacksonW.png" />
     <Content Include="Content\DogImages\JosieL.png" />
     <Content Include="Content\DogImages\LeviY.png" />
-    <Content Include="Content\DogImages\no_photo_available.png" />
+    <Content Include="Content\DogImages\noImage.png" />
     <Content Include="Content\DogImages\RangerW.png" />
     <Content Include="Content\DogImages\ScoobR.png" />
     <Content Include="Content\DogImages\SmokeyO.png" />
@@ -229,6 +229,7 @@
     <Content Include="Content\images\Aboutintrodoggo1.png" />
     <Content Include="Content\images\Aboutintrodoggo3.png" />
     <Content Include="Content\images\Admindoggo.png" />
+    <Content Include="Content\images\bernesemountaindoggo.jpg" />
     <Content Include="Content\images\blog.jpg" />
     <Content Include="Content\images\blog_1.jpg" />
     <Content Include="Content\images\blog_2.jpg" />
@@ -246,9 +247,11 @@
     <Content Include="Content\images\indexdoggo.png" />
     <Content Include="Content\images\intro_1.jpg" />
     <Content Include="Content\images\intro_2.jpg" />
+    <Content Include="Content\images\logindoggo.jpg" />
     <Content Include="Content\images\main.jpg" />
     <Content Include="Content\images\menu.jpg" />
     <Content Include="Content\images\quote.png" />
+    <Content Include="Content\images\registuredoggo.jpg" />
     <Content Include="Content\images\reservations.jpg" />
     <Content Include="Content\images\starters.jpg" />
     <Content Include="Content\images\tab.jpg" />

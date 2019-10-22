@@ -4,8 +4,8 @@
     ViewBag.Title = "Details";
 }
 
-<div class="home2">
-    <div class="parallax-mirror2 parallax-slider2" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
 </div>
 
 
@@ -20,7 +20,7 @@
                         <div>
 
                             <hr />
-                           
+
 
                             <div class="moveToCenter3" id="detailsStylingWrapper">
 
@@ -45,13 +45,15 @@
                                             @Html.DisplayFor(model => model.AssetName)
                                         </dd>
 
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.OwnerID)
-                                        </dt>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                                        {
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.UserID)
+                                            </dt>
 
-                                        <dd>
-                                            @Html.DisplayFor(model => model.OwnerID)
-                                        </dd>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.UserID)
+                                            </dd>}
                                         <dt>
                                             @Html.DisplayNameFor(model => model.DateAdded)
                                         </dt>
@@ -59,14 +61,15 @@
                                         <dd>
                                             @Html.DisplayFor(model => model.DateAdded)
                                         </dd>
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.IsActive)
-                                        </dt>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Employee")) { 
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.IsActive)
+                                            </dt>
 
                                         <dd>
                                             @Html.DisplayFor(model => model.IsActive)
                                         </dd>
-
+}
 
 
                                     </dl>
@@ -88,10 +91,12 @@
 
                             </div>
                         </div>
-                        <p class="moveToCenter">
-                            @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetID }) |
-                            @Html.ActionLink("Back to List", "Index")
-                        </p>
+                        <div class="moveToCenter">
+                            <div class="btn btn-warning createButton"> @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetID })</div>
+                            <div class="btn btn-warning backButton">
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
                         <br />
                     </div>
                 </div>
