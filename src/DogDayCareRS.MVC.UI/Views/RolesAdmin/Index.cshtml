@@ -9,16 +9,17 @@
     <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
 </div>
 
+<div class="btn btn-warning" style="margin-left:  11.5%; margin-bottom:2%; margin-top: 2%;">
+    @Html.ActionLink("Create New", "Create")
+</div>
 
-
-@if (User.IsInRole("Admin") || (User.IsInRole("Employee"))) { 
+@if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+{
     <div class="container">
         <div class="row">
             <div class="col">
 
-                <div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
-                    @Html.ActionLink("Create New", "Create")
-                </div>
+
                 <div class="dataTables_Correct">
                     <table class="display cell-border" id="UsersAdmin-table">
                         <thead>

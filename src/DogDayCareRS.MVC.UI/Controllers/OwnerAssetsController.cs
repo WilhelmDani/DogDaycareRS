@@ -57,13 +57,9 @@ namespace DogDayCareRS.MVC.UI.Controllers
             }
 
             //File upload for create
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && fupImage != null)
             {
-
-
                 string imgName = "noImage.png";
-                if (fupImage != null)
-                {
                     imgName = fupImage.FileName;
                     string ext = imgName.Substring(imgName.LastIndexOf('.'));
                     string[] goodExts = { "jpeg", ".jpg", ".gif", ".png" };
@@ -77,8 +73,9 @@ namespace DogDayCareRS.MVC.UI.Controllers
                     {
                         imgName = "noImage.png";
                     }
-                }
+                
                 ownerAsset.AssetPhoto = imgName;
+                ownerAsset.DateAdded = DateTime.Now;
                 db.Entry(ownerAsset).State = EntityState.Modified;
                 db.OwnerAssets.Add(ownerAsset);
                 db.SaveChanges();

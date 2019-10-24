@@ -3,6 +3,10 @@
 
 @{
     ViewBag.Title = "Create";
+    
+    ViewBag.Title = "Index";
+    var isClient = User.IsInRole("Client");
+    var dtClass = isClient ? "hide" : "show";
 }
 
 <div class="home">
@@ -15,31 +19,33 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-horizontal">
-        <h2 class="moveToCenter sig_subtitle page_subtitle">Add A&nbsp; Pup</h2>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <h2 class="moveToCenter sig_subtitle page_subtitle">Add A&nbsp; Pup</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group row">
-            @*@Html.LabelFor(model => model.AssetPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.AssetPhoto, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AssetPhoto, "", new { @class = "text-danger" })*@
-
-
-            <div class="col-md-10 resCreatePoosh">
-                @Html.LabelFor(model => model.AssetPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
-                <input type="file" style="display: inline" name="fupImage" />
-            </div>
-        </div>
-        <div class="form-group row resCreatePoosh">
-            @Html.LabelFor(model => model.AssetName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-group row">
+        @*@Html.LabelFor(model => model.AssetPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AssetName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "[Pup's Name]" } })
-                @Html.ValidationMessageFor(model => model.AssetName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                @Html.EditorFor(model => model.AssetPhoto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AssetPhoto, "", new { @class = "text-danger" })*@
 
+
+        <div class="col-md-10 resCreatePoosh">
+            @Html.LabelFor(model => model.AssetPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <input type="file" style="display: inline" name="fupImage" />
+        </div>
+    </div>
+    <div class="form-group row resCreatePoosh">
+        @Html.LabelFor(model => model.AssetName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AssetName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "[Pup's Name]" } })
+            @Html.ValidationMessageFor(model => model.AssetName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+    {
         <div class="form-group row resCreatePoosh">
             @Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -47,17 +53,20 @@
                 @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
             </div>
         </div>
+    }
 
 
 
-        <div class="form-group row resCreatePoosh">
-            @Html.LabelFor(model => model.SpecialNotes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SpecialNotes, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "[Any behavior/health concerns]" } })
-                @Html.ValidationMessageFor(model => model.SpecialNotes, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group row resCreatePoosh">
+        @Html.LabelFor(model => model.SpecialNotes, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SpecialNotes, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "[Any behavior/health concerns]" } })
+            @Html.ValidationMessageFor(model => model.SpecialNotes, "", new { @class = "text-danger" })
         </div>
+    </div>
 
+    @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
+    {
         <div class="form-group row resCreatePoosh">
             @Html.LabelFor(model => model.DateAdded, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -65,8 +74,7 @@
                 @Html.ValidationMessageFor(model => model.DateAdded, "", new { @class = "text-danger" })
             </div>
         </div>
-        @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
-        {
+       
             <div class="form-group row resCreatePoosh">
                 @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -76,6 +84,7 @@
                     </div>
                 </div>
             </div>}
+
         <div class="form-group row moveToCenter">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Add" class="btn btn-warning" />

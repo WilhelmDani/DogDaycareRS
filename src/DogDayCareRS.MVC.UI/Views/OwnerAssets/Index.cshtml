@@ -2,16 +2,18 @@
 
 @{
     ViewBag.Title = "Index";
+    var isClient = User.IsInRole("Client");
+    var dtClass = isClient ? "hide" : "show";
 }
 <!-- Home -->
 <div class="home">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/Admindoggo.png" data-speed="0.8"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/boxerBoiBackground2.png" data-speed="0.8"></div>
     <div class="home_container">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="home_content text-center">
-                        @if (User.IsInRole("Client"))
+                        @if (isClient)
                         {
                             <div class="home_title"><h1>My Pups</h1></div>}
                     </div>
@@ -22,99 +24,90 @@
 </div>
 
 
+<div class="btn btn-warning" style="margin-left: 13%; margin-bottom:2%; margin-top: 2%;">
+    @Html.ActionLink("Add A Pup", "Create")
+</div>
 
-    <div class="row">
-        <div class="container">
-            <div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
-                @Html.ActionLink("Add A Pup", "Create")
-            </div>
-            <div class="col">
+<div class="row">
+    <div class="container">
+        <div class="col">
+            <div class="dataTables_Correct" style="margin-bottom:2%;">
+                <table id="ownerAsset-table" class="display cell-border">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AssetPhoto)
 
-                <div class="dataTables_Correct" style="margin-bottom:2%;">
-                    <table id="ownerAsset-table" class="display cell-border">
-                        <thead>
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AssetName)
+                            </th>
+
+                            <th class=@dtClass>
+                                @Html.DisplayNameFor(model => model.UserID)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.SpecialNotes)
+                            </th>
+
+                            <th class=@dtClass>
+                                @Html.DisplayNameFor(model => model.IsActive)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateAdded)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
                             <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.AssetPhoto)
+                                <td>
+                                    <a href="@Url.Action("Details", new { id= item.OwnerAssetID})">   <img src="@Url.Content("~/Content/DogImages/" +  @item.AssetPhoto)" alt="A Reserve A Pup Client's doggo" class="doggoPictures" /></a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AssetName)
+                                </td>
 
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.AssetName)
-                                </th>
+                                <td class=@dtClass>
+                                    @Html.DisplayFor(modelItem => item.UserID)
+                                </td>
 
-                                <th>
-                                    @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
-                                    {
-                                        @Html.DisplayNameFor(model => model.UserID)}
-                                </th>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SpecialNotes)
+                                </td>
 
-                                <th>
-                                    @Html.DisplayNameFor(model => model.SpecialNotes)
-                                </th>
-
-                                <th>
-                                    @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
-                                    {
-                                        @Html.DisplayNameFor(model => model.IsActive)}
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DateAdded)
-                                </th>
-                                <th></th>
+                                <td class=@dtClass>
+                                    @Html.DisplayFor(modelItem => item.IsActive)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateAdded)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
+                                </td>
                             </tr>
-                        </thead>
 
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                        }
+                    </tbody>
 
-                                <tr>
-                                    <td>
-                                        <a href="@Url.Action("Details", new { id= item.OwnerAssetID})">   <img src="@Url.Content("~/Content/DogImages/" +  @item.AssetPhoto)" alt="A Reserve A Pup Client's doggo" class="doggoPictures" /></a>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AssetName)
-                                    </td>
-
-                                    <td>
-                                        @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
-                                        {
-                                            @Html.DisplayFor(modelItem => item.UserID)}
-                                    </td>
-
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.SpecialNotes)
-                                    </td>
-
-                                    <td>
-                                        @if (User.IsInRole("Admin") || (User.IsInRole("Employee")))
-                                        {
-                                            @Html.DisplayFor(modelItem => item.IsActive)}
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DateAdded)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetID }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetID })
-                                    </td>
-                                </tr>
-
-                            }
-                        </tbody>
-
-                    </table>
-                </div>
+                </table>
             </div>
         </div>
+    </div>
 </div>
 
 @section scripts {
     <script>
         $(document).ready(function () {
             $('#ownerAsset-table').DataTable({
-                "order": [[1, 'asc'], [2, 'asc']],
+                "order": [[1, 'asc']],
                 'columnDefs': [
                     {
                         'orderable': false,

@@ -3,6 +3,8 @@
 
 @{
     ViewBag.Title = "Index";
+    var isClient = User.IsInRole("Client");
+    var dtClass = isClient ? "hide" : "show";
 }
 
 <!-- Home -->
@@ -13,7 +15,7 @@
             <div class="row">
                 <div class="col">
                     <div class="home_content text-center">
-                        @if (User.IsInRole("Client"))
+                        @if (isClient)
                         {
                             <div class="home_title"><h1>My Reservations</h1></div>}
                     </div>
@@ -22,13 +24,11 @@
         </div>
     </div>
 </div>
-
+<div class="btn btn-warning" style="margin-left:  11.5%; margin-bottom:2%; margin-top: 2%;">
+    @Html.ActionLink("Add New Reservation", "Create")
+</div>
 <div class="container">
-  
     <div class="col">
-        <div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top: 2%;">
-            @Html.ActionLink("Add New Reservation", "Create")
-        </div>
         <div class="row">
             <div class="dataTables_Correct" style="margin-bottom:2%;">
                 <table id="reservations-table" class="display cell-border">
@@ -44,10 +44,8 @@
                                 @Html.DisplayNameFor(model => model.OwnerAsset.AssetName)
                             </th>
 
-                            <th>
-                                @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
-                                {
-                                    @Html.DisplayNameFor(model => model.OwnerAsset.UserID)}
+                            <th class=@dtClass>
+                                @Html.DisplayNameFor(model => model.OwnerAsset.UserID)
                             </th>
                             <th></th>
                         </tr>
@@ -67,10 +65,8 @@
                                     @Html.DisplayFor(modelItem => item.OwnerAsset.AssetName)
                                 </td>
 
-                                <td>
-                                    @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
-                                    {
-                                        @Html.DisplayFor(modelItem => item.OwnerAsset.UserID)}
+                                <td class=@dtClass>
+                                    @Html.DisplayFor(modelItem => item.OwnerAsset.UserID)
                                 </td>
                                 <td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |
@@ -87,18 +83,18 @@
     </div>
 </div>
 
-            @section scripts {
-                <script>
-                    $(document).ready(function () {
-                        $('#reservations-table').DataTable({
-                            'columnDefs': [
-                                {
-                                    'orderable': false,
-                                    'searchable': false,
-                                    'targets': [4]
-                                },
-                            ]
-                        });
-                    });
-                </script>
-            }
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#reservations-table').DataTable({
+                'columnDefs': [
+                    {
+                        'orderable': false,
+                        'searchable': false,
+                        'targets': [4]
+                    },
+                ]
+            });
+        });
+    </script>
+}

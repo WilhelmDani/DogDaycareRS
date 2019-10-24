@@ -1,4 +1,8 @@
-﻿.fixContent {
+﻿.hide {
+    display: none;
+}
+
+.fixContent {
     display: flex;
     justify-content: center;
     text-align: -webkit-center;
@@ -157,7 +161,7 @@ intro_FixedContentReservations{
 }
 
 .doggoPicturesDetails {
-    width: 300px;
+    width: 380px;
     height: 400px;
     border-radius: 10%;
     float: left;

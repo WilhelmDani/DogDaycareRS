@@ -42,7 +42,6 @@ namespace DogDayCareRS.MVC.DATA.EF/*.Metadata*/
         public string AssetName { get; set; }
         [Display(Name = "Owner ID")]
         public string UserID { get; set; }
-        [Required]
         [Display(Name = "Pup Photo")]
         public string AssetPhoto { get; set; }
         [Required]
@@ -51,7 +50,6 @@ namespace DogDayCareRS.MVC.DATA.EF/*.Metadata*/
         [Required]
         [Display(Name = "Approved Customer")]
         public bool IsActive { get; set; }
-        [Required]
         [DisplayFormat(DataFormatString = "{0:d}", NullDisplayText ="[N/A]")]
         [Display(Name ="Date Added")]
         public System.DateTime DateAdded { get; set; }

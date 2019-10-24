@@ -2,71 +2,78 @@
 
 @{
     ViewBag.Title = "Index";
+
+    var isClient = User.IsInRole("Client");
+    var dtClass = isClient ? "hide" : "show";
+
 }
 
 <div class="home">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/boxerBoiBackground2.png" data-speed="0.8"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="/Content/images/weimawinerdoggo.jpg" data-speed="0.8"></div>
 </div>
 
-<div class="btn btn-warning" style="margin-left: 2%; margin-bottom:2%; margin-top:2%;">
-    @Html.ActionLink("Create New", "Create")
-</div>
-<div class="intro">
-    <div class="container">
-        <div class="row">
-            <div class="col fixContent">
-                <div class="dataTables_Correct">
-                    <table class="display cell-border" id="clients-table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.FirstName)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.LastName)
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+<div class="btn btn-warning" style="margin-left:  11.5%; margin-top: 2%;">
+        @Html.ActionLink("Create New", "Create")
+    </div>
+
+    <div class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col fixContent">
+                    <div class="dataTables_Correct">
+                        <table class="display cell-border" id="clients-table">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FirstName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LastName)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
-                                    </td>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LastName)
+                                    </th>
+                                    <th></th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+                                            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                                            {@Html.ActionLink("Delete", "Delete", new { id = item.UserID })}
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
 
-                @section scripts {
-                    <script>
-                        $(document).ready(function () {
-                            $('#clients-table').DataTable({
-                                'columnDefs': [
-                                    {
-                                        'orderable': false,
-                                        'searchable': false,
-                                        'targets': [2]
-                                    },
-                                ]
-                            });
-                        });
-                    </script>
-                }
+    @section scripts {
+        <script>
+            $(document).ready(function () {
+                $('#clients-table').DataTable({
+                    'columnDefs': [
+                        {
+                            'orderable': false,
+                            'searchable': false,
+                            'targets': [2]
+                        },
+                    ]
+                });
+            });
+        </script>
+    }

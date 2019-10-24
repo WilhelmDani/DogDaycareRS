@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="form-actions no-color">
-                                <input type="submit" value="Edit" class="btn btn-warning" /> |
+                                <div class="btn btn-warning createButton"> @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetID })</div> |
                                 <div class="btn btn-primary backButton">
                                     @Html.ActionLink("Back", "Index")
                                 </div>

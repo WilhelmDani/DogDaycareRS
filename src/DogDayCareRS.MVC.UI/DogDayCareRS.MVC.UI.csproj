@@ -236,8 +236,10 @@
     <Content Include="Content\images\boxerBoiBackground2.png" />
     <Content Include="Content\images\contact.jpg" />
     <Content Include="Content\images\contactDoggo.png" />
+    <Content Include="Content\images\dalmatondoggo.jpg" />
     <Content Include="Content\images\DDRSfavicon.png" />
     <Content Include="Content\images\DDRSLogo.png" />
+    <Content Include="Content\images\doggonose.jpg" />
     <Content Include="Content\images\elements.jpg" />
     <Content Include="Content\images\home.jpg" />
     <Content Include="Content\images\Homedoggo.jpg" />
@@ -259,6 +261,7 @@
     <Content Include="Content\images\video.jpg" />
     <Content Include="Content\images\videodoggo.png" />
     <Content Include="Content\images\videodoggo2.png" />
+    <Content Include="Content\images\weimawinerdoggo.jpg" />
     <Content Include="Content\js\about.js" />
     <Content Include="Content\js\blog.js" />
     <Content Include="Content\js\contact.js" />
